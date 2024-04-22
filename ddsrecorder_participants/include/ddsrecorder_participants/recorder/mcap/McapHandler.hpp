@@ -511,12 +511,6 @@ protected:
 
     //! Unique sequence number assigned to received messages. It is incremented with every sample added.
     unsigned int unique_sequence_number_{0};
-
-    //! Lambda to call when disk limit is reached
-    std::function<void()> on_disk_full_lambda_;
-
-    //! True if lambda callback is set
-    bool on_disk_full_lambda_set_;
 };
 
 } /* namespace participants */
