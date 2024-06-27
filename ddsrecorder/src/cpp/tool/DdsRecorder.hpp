@@ -37,8 +37,6 @@
 
 #include <ddsrecorder_yaml/recorder/YamlReaderConfiguration.hpp>
 
-#include <yaml-cpp/yaml.h>
-
 namespace eprosima {
 namespace ddsrecorder {
 namespace recorder {
@@ -71,8 +69,7 @@ public:
     DdsRecorder(
             const yaml::RecorderConfiguration& configuration,
             const DdsRecorderStateCode& init_state,
-            const std::string& file_name = "",
-            int domain = 0);
+            const std::string& file_name = "");
 
     /**
      * DdsRecorder constructor by required values and event handler reference.

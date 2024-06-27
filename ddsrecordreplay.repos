@@ -2,24 +2,24 @@ repositories:
     foonathan_memory_vendor:
         type: git
         url: https://github.com/eProsima/foonathan_memory_vendor.git
-        version: v1.3.1
+        version: master
     fastcdr:
         type: git
         url: https://github.com/eProsima/Fast-CDR.git
-        version: v2.2.0
+        version: master
     fastdds:
         type: git
         url: https://github.com/eProsima/Fast-DDS.git
-        version: v2.14.0
+        version: bugfix/complex-dynamic-types
     dev-utils:
         type: git
         url: https://github.com/eProsima/dev-utils.git
-        version: v0.6.0
+        version: main
     ddspipe:
         type: git
         url: https://github.com/eProsima/DDS-Pipe.git
-        version: v0.4.0
+        version: main
     ddsrecordreplay:
         type: git
         url: https://github.com/eProsima/DDS-Record-Replay.git
-        version: v0.4.0
+        version: main

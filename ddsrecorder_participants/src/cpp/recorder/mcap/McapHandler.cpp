@@ -1166,9 +1166,13 @@ void McapHandler::store_dynamic_type_(
         const std::string& type_name,
         DynamicTypesCollection& dynamic_types) const
 {
-    auto type_names = utils::get_keys(schemas_);
-    DynamicTypesCollection dynamic_types;
-    for (auto& type_name: type_names)
+    const eprosima::fastrtps::types::TypeIdentifier* type_identifier = nullptr;
+    const eprosima::fastrtps::types::TypeObject* type_object = nullptr;
+    const eprosima::fastrtps::types::TypeInformation* type_information = nullptr;
+
+    type_information =
+            eprosima::fastrtps::types::TypeObjectFactory::get_instance()->get_type_information(type_name);
+    if (type_information != nullptr)
     {
         auto dependencies = type_information->complete().dependent_typeids();
         std::string dependency_name;
@@ -1188,14 +1192,16 @@ void McapHandler::store_dynamic_type_(
         }
     }
 
-        type_identifier = eprosima::fastrtps::types::TypeObjectFactory::get_instance()->get_type_identifier(type_name,
-                        true);
-        if (type_identifier)
-        {
-            type_object =
-                    eprosima::fastrtps::types::TypeObjectFactory::get_instance()->get_type_object(type_name, true);
-                    
-        }
+    type_identifier = nullptr;
+    type_object = nullptr;
+
+    type_identifier = eprosima::fastrtps::types::TypeObjectFactory::get_instance()->get_type_identifier(type_name,
+                    true);
+    if (type_identifier)
+    {
+        type_object =
+                eprosima::fastrtps::types::TypeObjectFactory::get_instance()->get_type_object(type_name, true);
+    }
 
     // If complete not found, try with minimal
     if (!type_object)

@@ -96,7 +96,6 @@ enum optionIndex
     INPUT_FILE,
     CONFIGURATION_FILE,
     RELOAD_TIME,
-    DOMAIN,
     ACTIVATE_DEBUG,
     VERSION,
     LOG_FILTER,
