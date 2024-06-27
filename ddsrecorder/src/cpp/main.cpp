@@ -14,7 +14,7 @@
 
 /**
  * @file main.cpp
- 
+ *
  */
 
 #include <nlohmann/json.hpp>
@@ -390,12 +390,8 @@ int main(
                 // NOTE: Changes to all (but controller specific) recorder configuration options are taken into account
                 configuration = eprosima::ddsrecorder::yaml::RecorderConfiguration(commandline_args.file_path);
 
-
-                // configuration.recorder_configuration->topic_qos.
-
                 // Create DDS Recorder
-                auto recorder = std::make_unique<DdsRecorder>(configuration, initial_state, "", commandline_args.domain);
-
+                auto recorder = std::make_unique<DdsRecorder>(configuration, initial_state, close_handler);
 
                 // Create File Watcher Handler
                 std::unique_ptr<eprosima::utils::event::FileWatcherHandler> file_watcher_handler;
@@ -528,7 +524,7 @@ int main(
         else
         {
             // Start recording right away
-            auto recorder = std::make_unique<DdsRecorder>(configuration, DdsRecorderState::RUNNING, "", commandline_args.domain);
+            auto recorder = std::make_unique<DdsRecorder>(configuration, DdsRecorderState::RUNNING, close_handler);
 
             // Create File Watcher Handler
             std::unique_ptr<eprosima::utils::event::FileWatcherHandler> file_watcher_handler;
